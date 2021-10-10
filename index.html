@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+  <head>
+    <title>Country Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Get country and ISO code information">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" type= "text/css" href= "styles.css">
+  </head>
+  <body>
+    <script type="text/javascript" src="country_info.json"></script>
+    <script src="countries.js"></script>
+    <script src="utils.js"></script>
+    <script>
+      function getCountryCards(countries) {
+        html = ""
+        for (const country of countries) {
+          let pop = numberWithCommas(country.Population);
+          let continent = getContinentName(country.Continent);
+          let area = numberWithCommas(country.Area);
+          html += `<article>
+                    <header>${country.Country}</header>
+                    ISO: ${country.ISO}<br/>
+                    ISO3: ${country.ISO3}<br/>
+                    ISO Numeric: ${country.ISONumeric}<br/>
+                    Capital: ${country.Capital}<br/>
+                    Area: ${area} Sq km<br/>
+                    Population: ${pop}<br/>
+                    Continent: ${continent}<br/>
+                    Top Level Domain: ${country.tld}<br/>
+                    Currency Code: ${country.CurrencyCode}<br/>
+                    Currency Name: ${country.CurrencyName}<br/>
+                    Phone: ${country.Phone}
+                  </article>
+                  `;
+        }
+        return html;
+      }
+
+      function countryInfo() {
+        const search = document.querySelector('input').value;
+        let countries = getCountries(search);
+        if (countries != undefined){
+          document.getElementById("results").innerHTML = getCountryCards(countries);
+        }
+        else {
+          document.getElementById("results").innerHTML = "";
+        }
+        
+      }
+    </script>
+    <div class="container">
+      <div class="container">
+        <img class="banner" src="banner.jpg" alt="">
+        <div class="bottom-right">Country Info</div>
+      </div>
+      <p>
+        <input type="text" placeholder="Country or ISO" onkeyup="countryInfo()">
+      </p>
+      <div id="results"></div>
+    </div>
+  </body>
+</html>

@@ -13,6 +13,31 @@
     <script src="countries.js"></script>
     <script src="utils.js"></script>
     <script>
+      let isoInfo = `
+        <article>
+        <header>ISO 3166-1 Country Codes</header>
+        <p>
+          <b>ISO 3166-1 alpha-2</b> - two letter country codes, used most prominently for the Internet's country code top-level domains (with a few exceptions).
+        </p>
+        <p>
+          <b>ISO 3166-1 alpha-3</b> - three letter country codes which allow a better visual association between the codes and the country names than the alpha-2 codes.
+        </p>
+
+        <p>
+          The first edition of ISO 3166, which included only alphabetic country codes, was published in 1974. The second edition, published in 1981, also included numeric country codes, with the third and fourth editions published in 1988 and 1993 respectively. The fifth edition, published between 1997 and 1999, was expanded into three parts to include codes for subdivisions and former countries.
+        </p>
+
+        <p>
+          The first edition of ISO 3166, which included only alphabetic country codes, was published in 1974. The second edition, published in 1981, also included numeric country codes, with the third and fourth editions published in 1988 and 1993 respectively. The fifth edition, published between 1997 and 1999, was expanded into three parts to include codes for subdivisions and former countries.
+        </p>
+
+        <p>
+          <a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" target="_blank">List of ISO 3166 Country Codes on Wikipedia</a>
+        </p>
+        
+        
+        <article>
+      `;
       function getCountryCards(countries) {
         html = ""
         for (const country of countries) {
@@ -45,7 +70,7 @@
           document.getElementById("results").innerHTML = getCountryCards(countries);
         }
         else {
-          document.getElementById("results").innerHTML = "";
+          document.getElementById("results").innerHTML = isoInfo;
         }
         
       }
@@ -60,5 +85,9 @@
       </p>
       <div id="results"></div>
     </div>
+
+    <script>
+      countryInfo();
+    </script>
   </body>
 </html>

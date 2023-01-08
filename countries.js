@@ -12,6 +12,11 @@ let continents = {
 let getCountries = function (val){
 
   let len = val.length;
+
+  if(len>0 && !isNaN(val)){
+    return (data.filter(item => item.Phone == val))
+  }
+
   val = val.toUpperCase();
 
   if(len == 2){
